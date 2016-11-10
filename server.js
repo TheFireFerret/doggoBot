@@ -137,8 +137,8 @@ function getImage () {
 	};
 
 	var req = http.get(options, function(res) {
-	  console.log('STATUS: ' + res.statusCode);
-	  console.log('HEADERS: ' + JSON.stringify(res.headers));
+	  // console.log('STATUS: ' + res.statusCode);
+	  // console.log('HEADERS: ' + JSON.stringify(res.headers));
 
 	  // Buffer the body entirely for processing as a whole.
 	  var bodyChunks = [];

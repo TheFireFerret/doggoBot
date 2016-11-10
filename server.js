@@ -131,7 +131,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 function getImage () {
 	var http = require('http');
 	var url = 'https://api.tumblr.com/v2/tagged?tag=husky&api_key=' + process.env.TUMBLR_ACCESS_KEY;
-	console.log(p);
+	console.log(url);
 	var options = {
 	  host: url
 	};

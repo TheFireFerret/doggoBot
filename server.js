@@ -131,14 +131,15 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 function getImage () {
 	var http = require('http');
 	var url = 'https://api.tumblr.com/v2/tagged?tag=husky&api_key=' + process.env.TUMBLR_ACCESS_KEY;
-	console.log(url);
+
 	var options = {
-	  host: url
+	  host: url,
+	  path: ''
 	};
 
 	var req = http.get(options, function(res) {
-	  // console.log('STATUS: ' + res.statusCode);
-	  // console.log('HEADERS: ' + JSON.stringify(res.headers));
+	  console.log('STATUS: ' + res.statusCode);
+	  console.log('HEADERS: ' + JSON.stringify(res.headers));
 
 	  // Buffer the body entirely for processing as a whole.
 	  var bodyChunks = [];
@@ -153,7 +154,7 @@ function getImage () {
 	});
 
 	req.on('error', function(e) {
-	  console.log('ERROR: ' + e.message);
+	  consloe.log('ERROR: ' + e.message);
 	});
 
 }

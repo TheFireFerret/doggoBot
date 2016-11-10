@@ -149,7 +149,7 @@ function getImage (listType) {
 
 
 slapp.message('doggo|doggos', ['mention', 'direct_message'], (msg) => {
-	console.log(getImage("hi"))
+	// console.log(getImage("hi"))
 	msg.say({
 		text: 'Check out this amazing attachment! :confetti_ball: ',
 		attachments: [{

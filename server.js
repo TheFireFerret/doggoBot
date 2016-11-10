@@ -107,6 +107,7 @@ slapp
 
 	// demonstrate returning an attachment...
 	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
+		console.log(getImage())
 		msg.say({
 			text: 'Check out this amazing attachment! :confetti_ball: ',
 			attachments: [{
@@ -127,37 +128,32 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 	}
 })
 
-function getImage (listType) {
-	var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
-	var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"];
-	var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"];
-	var lists = [doggos, woofers, puppers]
-
+function getImage () {
 	var http = require('http');
-	console.log("AM I ALIVE???");
-
-
-	//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
 	var options = {
-		host: 'www.random.org',
-		path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+	  host: 'www.google.com',
+	  path: '/index.html'
 	};
 
-	callback = function(response) {
-		var str = '';
+	var req = http.get(options, function(res) {
+	  console.log('STATUS: ' + res.statusCode);
+	  console.log('HEADERS: ' + JSON.stringify(res.headers));
 
-		//another chunk of data has been recieved, so append it to `str`
-		response.on('data', function (chunk) {
-			str += chunk;
-		});
+	  // Buffer the body entirely for processing as a whole.
+	  var bodyChunks = [];
+	  res.on('data', function(chunk) {
+	    // You can process streamed parts here...
+	    bodyChunks.push(chunk);
+	  }).on('end', function() {
+	    var body = Buffer.concat(bodyChunks);
+	    console.log('BODY: ' + body);
+	    // ...and/or process the entire body here.
+	  })
+	});
 
-		//the whole response has been recieved, so we just print it out here
-		response.on('end', function () {
-			console.log(str);
-		});
-	}
-
-	http.request(options, callback).end();
+	req.on('error', function(e) {
+	  consloe.log('ERROR: ' + e.message);
+	});
 
 }
 

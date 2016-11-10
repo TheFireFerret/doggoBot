@@ -107,7 +107,6 @@ slapp
 
 	// demonstrate returning an attachment...
 	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
-		console.log(getImage("wow"));
 		msg.say({
 			text: 'Check out this amazing attachment! :confetti_ball: ',
 			attachments: [{

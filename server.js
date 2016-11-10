@@ -57,7 +57,7 @@ slapp
 	state.status = text
 
 	msg
-	.say(`Ok then. What's your favorite color?`)
+	.say("Ok then. What's your favorite color?")
 	.route('color', state)
 })
 .route('color', (msg, state) => {
@@ -89,7 +89,7 @@ slapp
 			':+1: Of course',
 			'Anytime :sun_with_face: :full_moon_with_face:'
 			])
-})
+	})
 
 	// demonstrate returning an attachment...
 	slapp.message('attachment', ['mention', 'direct_message'], (msg) => {
@@ -98,18 +98,32 @@ slapp
 			attachments: [{
 				text: 'Slapp is a robust open source library that sits on top of the Slack APIs',
 				title: 'Slapp Library - Open Source',
-		image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
-		title_link: 'https://beepboophq.com/',
-		color: '#7CD197'
-	}]
-})
-})
+				image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
+				title_link: 'https://beepboophq.com/',
+				color: '#7CD197'
+			}]
+		})
+	})
+
+	// demonstrate returning an attachment...
+	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
+		msg.say({
+			text: 'Check out this amazing attachment! :confetti_ball: ',
+			attachments: [{
+				text: 'Slapp is a robust open source library that sits on top of the Slack APIs',
+				title: 'Slapp Library - Open Source',
+				image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
+				title_link: 'https://beepboophq.com/',
+				color: '#7CD197'
+			}]
+		})
+	})
 
 // Catch-all for any other responses not handled above
 slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 	// respond only 40% of the time
 	if (Math.random() < 0.4) {
-	msg.say([':wave:', ':pray:', ':raised_hands:'])
+		msg.say([':wave:', ':pray:', ':raised_hands:'])
 	}
 })
 
@@ -134,12 +148,12 @@ function getImage (listType) {
 
 		//another chunk of data has been recieved, so append it to `str`
 		response.on('data', function (chunk) {
-		str += chunk;
+			str += chunk;
 		});
 
 		//the whole response has been recieved, so we just print it out here
 		response.on('end', function () {
-		console.log(str);
+			console.log(str);
 		});
 	}
 
@@ -147,20 +161,6 @@ function getImage (listType) {
 
 }
 
-
-slapp.message('doggo|doggos', ['mention', 'direct_message'], (msg) => {
-	// console.log(getImage("hi"))
-	msg.say({
-		text: 'Check out this amazing attachment! :confetti_ball: ',
-		attachments: [{
-			text: 'Slapp is a robust open source library that sits on top of the Slack APIs',
-			title: 'Slapp Library - Open Source',
-			image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
-			title_link: 'https://beepboophq.com/',
-			color: '#7CD197'
-		}]
-	})
-})
 
 // attach Slapp to express server
 var server = slapp.attachToExpress(express())

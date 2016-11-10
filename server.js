@@ -152,7 +152,7 @@ function getImage () {
 	});
 
 	req.on('error', function(e) {
-	  consloe.log('ERROR: ' + e.message);
+	  console.log('ERROR: ' + e.message);
 	});
 
 }

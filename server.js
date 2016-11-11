@@ -154,7 +154,7 @@ function getImage () {
 				}
 			}
 			console.log(url);
-		})
+		}
 }
 
 

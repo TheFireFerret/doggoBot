@@ -140,9 +140,9 @@ function getImage () {
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			console.log(body);
-			parsed = JSON.parse(body);
+			var parsed = JSON.parse(body);
 
-			urls = []
+			var urls = []
 			var photos;
 
 			for (post in parsed) {

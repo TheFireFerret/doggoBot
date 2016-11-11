@@ -143,11 +143,13 @@ function getImage () {
 			parsed = JSON.parse(body);
 
 			urls = []
-			for post in parsed:
-				if 'photos' in post:
+			var photos;
+
+			for (post in parsed) {
+				if 'photos' in post
 					photos = post['photos'];
-				size = photos[0]['original_size'];
-				url = size['url'];
+				var size = photos[0]['original_size'];
+				var url = size['url'];
 				urls.append(url);
 			}
 			console.log(url);

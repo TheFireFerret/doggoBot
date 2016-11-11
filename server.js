@@ -132,9 +132,9 @@ function getImage () {
 	var http = require('http');
 	var url = 'https://api.tumblr.com/v2/tagged?tag=husky&api_key=' + process.env.TUMBLR_ACCESS_KEY;
 
-	doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"]
-	woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"]
-	puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"]
+	var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"]
+	var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"]
+	var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"]
 
 	var request = require('request');
 	request(url, function (error, response, body) {

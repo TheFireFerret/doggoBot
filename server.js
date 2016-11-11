@@ -132,13 +132,26 @@ function getImage () {
 	var http = require('http');
 	var url = 'https://api.tumblr.com/v2/tagged?tag=husky&api_key=' + process.env.TUMBLR_ACCESS_KEY;
 
+	doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"]
+	woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"]
+	puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"]
+
 	var request = require('request');
 	request(url, function (error, response, body) {
-	  if (!error && response.statusCode == 200) {
-	    console.log(body) // Print the google web page.
-	  }
-	})
+		if (!error && response.statusCode == 200) {
+			console.log(body);
+			parsed = JSON.parse(body);
 
+			urls = []
+			for post in parsed:
+				if 'photos' in post:
+					photos = post['photos'];
+				size = photos[0]['original_size'];
+				url = size['url'];
+				urls.append(url);
+			}
+			console.log(url);
+		})
 }
 
 

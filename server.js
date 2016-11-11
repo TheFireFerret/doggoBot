@@ -155,7 +155,8 @@ function getImage () {
 			}
 			console.log(url);
 		}
-})
+	});
+}
 
 
 // attach Slapp to express server

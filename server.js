@@ -146,11 +146,12 @@ function getImage () {
 			var photos;
 
 			for (post in parsed) {
-				if 'photos' in post
+				if ("photos" in post) {
 					photos = post['photos'];
-				var size = photos[0]['original_size'];
-				var url = size['url'];
-				urls.append(url);
+					var size = photos[0]['original_size'];
+					var url = size['url'];
+					urls.append(url);
+				}
 			}
 			console.log(url);
 		})

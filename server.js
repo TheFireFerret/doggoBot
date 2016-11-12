@@ -110,21 +110,20 @@ slapp
 
 		var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
 
-		// console.log(getImage(doggos));
 		getImage(doggos, function(url){
-			console.log(url);
+			msg.say({
+				text: 'Check out this amazing attachment! :confetti_ball: ',
+				attachments: [{
+					text: 'Slapp is a robust open source library that sits on top of the Slack APIs',
+					title: 'Slapp Library - Open Source',
+					image_url: url,
+					title_link: 'https://beepboophq.com/',
+					color: '#7CD197'
+				}]
+			})
 		});
 
-		msg.say({
-			text: 'Check out this amazing attachment! :confetti_ball: ',
-			attachments: [{
-				text: 'Slapp is a robust open source library that sits on top of the Slack APIs',
-				title: 'Slapp Library - Open Source',
-				image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
-				title_link: 'https://beepboophq.com/',
-				color: '#7CD197'
-			}]
-		})
+
 	})
 
 // Catch-all for any other responses not handled above

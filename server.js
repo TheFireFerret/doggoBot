@@ -144,6 +144,7 @@ function getImage () {
 
 			for(var attributename in parsed){
 			    console.log(attributename + ": " + parsed[attributename]);
+			    console.log("~~ %j", parsed[attributename]);
 			}
 
 			// var urls = []

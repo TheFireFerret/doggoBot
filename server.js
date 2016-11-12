@@ -145,7 +145,7 @@ function getImage () {
 			var urls = []
 			var photos;
 
-			for (var post in parsed[]) {
+			for (var post in parsed) {
 				console.log("start::::")
 				console.log(post);
 				if (post.hasOwnProperty('photos')) {

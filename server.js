@@ -143,7 +143,7 @@ function getImage (tag_list) {
     });
 }
 
-function getImageUrl(tag_list, callback){
+function getImageUrl(tag, callback){
     var http = require('http');
     var url = 'https://api.tumblr.com/v2/tagged?tag=' + tag + '&api_key=' + process.env.TUMBLR_ACCESS_KEY;
     var urls = []

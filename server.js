@@ -106,8 +106,7 @@ slapp
 	})
 
 	// demonstrate returning an attachment...
-	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
-
+	slapp.message('doggos|doggo', ['mention', 'direct_message'], (msg) => {
 		var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
 
 		getImage(doggos, function(url){
@@ -117,19 +116,49 @@ slapp
 					title: 'doggo',
 					image_url: url,
 					title_link: url,
-					color: '#7CD197'
+					color: '#7D26CD'
 				}]
 			})
 		});
+	});
 
+	// demonstrate returning an attachment...
+	slapp.message('pupper|puppers', ['mention', 'direct_message'], (msg) => {
+		var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"];
+		getImage(puppers, function(url){
+			msg.say({
+				text: ':dog:',
+				attachments: [{
+					title: 'doggo',
+					image_url: url,
+					title_link: url,
+					color: '#7D26CD'
+				}]
+			})
+		});
+	});
 
-	})
+	// demonstrate returning an attachment...
+	slapp.message('woofer|woofers', ['mention', 'direct_message'], (msg) => {
+		var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"];
+		getImage(woofers, function(url){
+			msg.say({
+				text: ':dog:',
+				attachments: [{
+					title: 'doggo',
+					image_url: url,
+					title_link: url,
+					color: '#7D26CD'
+				}]
+			})
+		});
+	});
 
 // Catch-all for any other responses not handled above
 slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
-	// respond only 40% of the time
-	if (Math.random() < 0.4) {
-		msg.say([':wave:', ':pray:', ':raised_hands:'])
+	// respond only 50% of the time
+	if (Math.random() < 0.5) {
+		msg.say([':dog:', ':dog2:', 'bork', 'woof', 'bark'])
 	}
 })
 

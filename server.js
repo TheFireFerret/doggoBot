@@ -116,7 +116,7 @@ slapp
 	})
 
 	// demonstrate returning an attachment...
-	slapp.message('doggos|doggo', ['mention', 'direct_message', 'ambient'], (msg) => {
+	slapp.message('doggos|doggo', ['mention', 'direct_message',], (msg) => {
 		var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
 
 		getImage(doggos, function(url){
@@ -133,7 +133,7 @@ slapp
 	});
 
 	// demonstrate returning an attachment...
-	slapp.message('pupper|puppers', ['mention', 'direct_message', 'ambient'], (msg) => {
+	slapp.message('pupper|puppers', ['mention', 'direct_message'], (msg) => {
 		var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"];
 		getImage(puppers, function(url){
 			msg.say({
@@ -149,7 +149,7 @@ slapp
 	});
 
 	// demonstrate returning an attachment...
-	slapp.message('woofer|woofers', ['mention', 'direct_message', 'ambient'], (msg) => {
+	slapp.message('woofer|woofers', ['mention', 'direct_message'], (msg) => {
 		var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"];
 		getImage(woofers, function(url){
 			msg.say({

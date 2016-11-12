@@ -147,9 +147,17 @@ function getImage () {
 
 			for (var post in parsed) {
 				if (post.hasOwnProperty('photos')) {
+					console.log("post:::");
+					console.log(post);
 					photos = post['photos'];
+					console.log("photos:::");
+					console.log(photos);
 					var size = photos[0]['original_size'];
+					console.log("size:::");
+					console.log(size);
 					var url = size['url'];
+					console.log("url:::");
+					console.log(url);
 					urls.append(url);
 				}
 			}

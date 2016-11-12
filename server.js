@@ -111,6 +111,9 @@ slapp
 	var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
 
 		console.log(getImage(doggos));
+		getImage(doggos, function(url){
+			console.log(url);
+		});
 		msg.say({
 			text: 'Check out this amazing attachment! :confetti_ball: ',
 			attachments: [{
@@ -131,21 +134,11 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 	}
 })
 
-function getImage (tag_list) {
-    // var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
-    // var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"];
-    // var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"];
-
-    var tag = tag_list[Math.floor(Math.random() * tag_list.length)];
-    var img = getImageUrl(tag, function(url){
-        // console.log(url);
-        return url;
-    });
-}
-
-function getImageUrl(tag, callback){
+function getImage(tag_list, callback){
 	var request = require('request');
     var http = require('http');
+
+    var tag = tag_list[Math.floor(Math.random() * tag_list.length)];
     var url = 'https://api.tumblr.com/v2/tagged?tag=' + tag + '&api_key=' + process.env.TUMBLR_ACCESS_KEY;
     var urls = []
 

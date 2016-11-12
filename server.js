@@ -144,6 +144,7 @@ function getImage (tag_list) {
 }
 
 function getImageUrl(tag, callback){
+	var request = require('request');
     var http = require('http');
     var url = 'https://api.tumblr.com/v2/tagged?tag=' + tag + '&api_key=' + process.env.TUMBLR_ACCESS_KEY;
     var urls = []

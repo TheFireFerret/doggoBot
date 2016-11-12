@@ -107,13 +107,14 @@ slapp
 
 	// demonstrate returning an attachment...
 	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
-	
-	var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
+
+		var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
 
 		console.log(getImage(doggos));
 		getImage(doggos, function(url){
 			console.log(url);
 		});
+
 		msg.say({
 			text: 'Check out this amazing attachment! :confetti_ball: ',
 			attachments: [{
@@ -136,26 +137,26 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 
 function getImage(tag_list, callback){
 	var request = require('request');
-    var http = require('http');
+	var http = require('http');
 
-    var tag = tag_list[Math.floor(Math.random() * tag_list.length)];
-    var url = 'https://api.tumblr.com/v2/tagged?tag=' + tag + '&api_key=' + process.env.TUMBLR_ACCESS_KEY;
-    var urls = []
+	var tag = tag_list[Math.floor(Math.random() * tag_list.length)];
+	var url = 'https://api.tumblr.com/v2/tagged?tag=' + tag + '&api_key=' + process.env.TUMBLR_ACCESS_KEY;
+	var urls = []
 
-    request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var parsed = JSON.parse(body)['response'];
-            for(var attr in parsed){
-                var post = parsed[attr];
-                if (post.hasOwnProperty("photos")) {
-                    var photo = post["photos"][0]["original_size"]["url"];
-                    urls.push(photo);
-                }
-            }
-            var url = urls[Math.floor(Math.random() * urls.length)];
-            callback(url);
-        }
-    });
+	request(url, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			var parsed = JSON.parse(body)['response'];
+			for(var attr in parsed){
+				var post = parsed[attr];
+				if (post.hasOwnProperty("photos")) {
+					var photo = post["photos"][0]["original_size"]["url"];
+					urls.push(photo);
+				}
+			}
+			var url = urls[Math.floor(Math.random() * urls.length)];
+			callback(url);
+		}
+	});
 }
 
 

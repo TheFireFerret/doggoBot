@@ -107,7 +107,7 @@ slapp
 
 	// demonstrate returning an attachment...
 	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
-		console.log(getImage())
+		// console.log(getImage())
 		msg.say({
 			text: 'Check out this amazing attachment! :confetti_ball: ',
 			attachments: [{
@@ -153,7 +153,7 @@ function getImage () {
 					urls.append(url);
 				}
 			}
-			console.log(url);
+			console.log(urls);
 		}
 	});
 }

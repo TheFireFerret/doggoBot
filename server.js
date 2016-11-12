@@ -146,6 +146,8 @@ function getImage () {
 			var photos;
 
 			for (var post in parsed) {
+				console.log("start::::")
+				console.log(post);
 				if (post.hasOwnProperty('photos')) {
 					console.log("post:::");
 					console.log(post);

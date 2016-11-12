@@ -139,7 +139,7 @@ slapp
 			msg.say({
 				text: ':dog:',
 				attachments: [{
-					title: 'doggo',
+					title: 'pupper',
 					image_url: url,
 					title_link: url,
 					color: '#7D26CD'
@@ -155,7 +155,7 @@ slapp
 			msg.say({
 				text: ':dog:',
 				attachments: [{
-					title: 'doggo',
+					title: 'woofer',
 					image_url: url,
 					title_link: url,
 					color: '#7D26CD'

@@ -145,7 +145,7 @@ function getImage () {
 			var urls = []
 			var photos;
 
-			for (post in parsed) {
+			for (var post in parsed) {
 				if ("photos" in post) {
 					photos = post['photos'];
 					var size = photos[0]['original_size'];

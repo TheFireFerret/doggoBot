@@ -112,12 +112,11 @@ slapp
 
 		getImage(doggos, function(url){
 			msg.say({
-				text: 'Check out this amazing attachment! :confetti_ball: ',
+				text: ':dog:',
 				attachments: [{
-					text: 'Slapp is a robust open source library that sits on top of the Slack APIs',
-					title: 'Slapp Library - Open Source',
+					title: 'doggo',
 					image_url: url,
-					title_link: 'https://beepboophq.com/',
+					title_link: url,
 					color: '#7CD197'
 				}]
 			})

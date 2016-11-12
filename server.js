@@ -139,31 +139,36 @@ function getImage () {
 	var request = require('request');
 	request(url, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			console.log(body);
+			// console.log(body);
 			var parsed = JSON.parse(body)['response'];
 
-			var urls = []
-			var photos;
-
-			for (var post in parsed) {
-				console.log("start::::")
-				console.log(post);
-				if (post.hasOwnProperty('photos')) {
-					console.log("post:::");
-					console.log(post);
-					photos = post['photos'];
-					console.log("photos:::");
-					console.log(photos);
-					var size = photos[0]['original_size'];
-					console.log("size:::");
-					console.log(size);
-					var url = size['url'];
-					console.log("url:::");
-					console.log(url);
-					urls.append(url);
-				}
+			for(var attributename in parsed){
+			    console.log(attributename + ": " + myobject[attributename]);
 			}
-			console.log(urls);
+
+			// var urls = []
+			// var photos;
+
+			// for (var index in parsed) {
+			// 	console.log("start::::")
+			// 	console.log(index);
+			// 	console.log(parsed[index]);
+			// 	if (index.hasOwnProperty('photos')) {
+			// 		console.log("post:::");
+			// 		console.log(index);
+			// 		photos = post[index]['photos'];
+			// 		console.log("photos:::");
+			// 		console.log(photos);
+			// 		var size = photos[0]['original_size'];
+			// 		console.log("size:::");
+			// 		console.log(size);
+			// 		var url = size['url'];
+			// 		console.log("url:::");
+			// 		console.log(url);
+			// 		urls.append(url);
+			// 	}
+			// }
+			// console.log(urls);
 		}
 	});
 }

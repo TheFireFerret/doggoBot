@@ -107,7 +107,10 @@ slapp
 
 	// demonstrate returning an attachment...
 	slapp.message('doggos', ['mention', 'direct_message'], (msg) => {
-		getImage()
+	
+	var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
+
+		console.log(getImage(doggos));
 		msg.say({
 			text: 'Check out this amazing attachment! :confetti_ball: ',
 			attachments: [{
@@ -128,50 +131,37 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 	}
 })
 
-function getImage () {
-	var http = require('http');
-	var url = 'https://api.tumblr.com/v2/tagged?tag=husky&api_key=' + process.env.TUMBLR_ACCESS_KEY;
+function getImage (tag_list) {
+    // var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
+    // var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"];
+    // var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"];
 
-	var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"]
-	var woofers = ["Saint-Bernard", "mastiff", "greyhound", "german-shepard", "german shepard", "husky", "Siberian Husky", "Golden Retriever"]
-	var puppers = ["beagle", "beagles", "dachshund", "papillon", "pomeranian", "schipperke", "yorkie"]
+    var tag = tag_list[Math.floor(Math.random() * tag_list.length)];
+    var img = getImageUrl(tag, function(url){
+        // console.log(url);
+        return url;
+    });
+}
 
-	var request = require('request');
-	request(url, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			// console.log(body);
-			var parsed = JSON.parse(body)['response'];
+function getImageUrl(tag_list, callback){
+    var http = require('http');
+    var url = 'https://api.tumblr.com/v2/tagged?tag=' + tag + '&api_key=' + process.env.TUMBLR_ACCESS_KEY;
+    var urls = []
 
-			for(var attributename in parsed){
-			    console.log(attributename + ": " + parsed[attributename]);
-			    console.log("~~ %j", parsed[attributename]);
-			}
-
-			// var urls = []
-			// var photos;
-
-			// for (var index in parsed) {
-			// 	console.log("start::::")
-			// 	console.log(index);
-			// 	console.log(parsed[index]);
-			// 	if (index.hasOwnProperty('photos')) {
-			// 		console.log("post:::");
-			// 		console.log(index);
-			// 		photos = post[index]['photos'];
-			// 		console.log("photos:::");
-			// 		console.log(photos);
-			// 		var size = photos[0]['original_size'];
-			// 		console.log("size:::");
-			// 		console.log(size);
-			// 		var url = size['url'];
-			// 		console.log("url:::");
-			// 		console.log(url);
-			// 		urls.append(url);
-			// 	}
-			// }
-			// console.log(urls);
-		}
-	});
+    request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var parsed = JSON.parse(body)['response'];
+            for(var attr in parsed){
+                var post = parsed[attr];
+                if (post.hasOwnProperty("photos")) {
+                    var photo = post["photos"][0]["original_size"]["url"];
+                    urls.push(photo);
+                }
+            }
+            var url = urls[Math.floor(Math.random() * urls.length)];
+            callback(url);
+        }
+    });
 }
 
 

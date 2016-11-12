@@ -110,7 +110,7 @@ slapp
 
 		var doggos = ["samoyed", "shibe", "shiba", "doge", "shibainu", "shetland-sheepdog", "sheltie", "shelties"];
 
-		console.log(getImage(doggos));
+		// console.log(getImage(doggos));
 		getImage(doggos, function(url){
 			console.log(url);
 		});

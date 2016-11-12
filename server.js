@@ -143,7 +143,7 @@ function getImage () {
 			var parsed = JSON.parse(body)['response'];
 
 			for(var attributename in parsed){
-			    console.log(attributename + ": " + myobject[attributename]);
+			    console.log(attributename + ": " + parsed[attributename]);
 			}
 
 			// var urls = []

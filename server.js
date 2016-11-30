@@ -164,7 +164,7 @@ slapp
 		});
 	});
 
-slapp.message(':^)', ['mention', 'direct_message'], (msg) => {
+slapp.message(':\^\)', ['mention', 'direct_message'], (msg) => {
 	msg.say([
                         "You're welcome :smile:",
                         'You bet',

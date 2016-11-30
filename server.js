@@ -164,6 +164,14 @@ slapp
 		});
 	});
 
+slapp.message(':^)', ['mention', 'direct_message'], (msg) => {
+	msg.say([
+                        "You're welcome :smile:",
+                        'You bet',
+                        ':wink;',
+                        'Anytime :sun_with_face: :full_moon_with_face:'
+                        ])
+}
 // Catch-all for any other responses not handled above
 slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 	// respond only 50% of the time
